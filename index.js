@@ -28,7 +28,6 @@ app.post("/create", (req, res) => {
   const postAuthor = req.body["author"];
   const postContent = req.body["content"];
   
-  // Walidacja po stronie serwera
   if (!postTitle || !postAuthor || !postContent) {
     return res.redirect("/create");
   }
@@ -64,7 +63,6 @@ app.get("/edit/:id", (req, res) => {
 app.post("/edit/:id", (req, res) => {
   const post = posts.find(p => p.id == req.params.id);
   if (post) {
-    // Walidacja
     if (req.body.title && req.body.author && req.body.content && req.body.content.length >= 10) {
       post.title = req.body.title;
       post.author = req.body.author;
@@ -72,7 +70,6 @@ app.post("/edit/:id", (req, res) => {
     }
   }
   
-  // Przekieruj na stronę z której przyszedł
   const returnUrl = req.body.returnUrl || '/';
   res.redirect(returnUrl);
 });

@@ -1,0 +1,93 @@
+<%- include('partials/header.ejs') %>
+
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    
+    <div class="mb-4">
+      <h1 class="display-4 mb-2">
+        <i class="bi bi-pencil-square"></i> Edit Post
+      </h1>
+      <p class="text-muted">Update your post content</p>
+    </div>
+
+    <div class="card shadow-sm">
+      <div class="card-body p-4">
+        <form action="/edit/<%= post.id %>" method="POST" id="editForm">
+          
+          <input type="hidden" name="returnUrl" id="returnUrl" value="<%= referrer.includes('/posts') ? '/posts' : '/' %>">
+          <input type="hidden" name="postId" value="<%= post.id %>">
+          
+          <div class="mb-3">
+            <label for="title" class="form-label fw-bold">
+              Post Title <span class="text-danger">*</span>
+            </label>
+            <input 
+              type="text" 
+              class="form-control form-control-lg" 
+              id="title" 
+              name="title" 
+              value="<%= post.title %>"
+              required
+            >
+          </div>
+
+          <div class="mb-3">
+            <label for="author" class="form-label fw-bold">
+              Author Name <span class="text-danger">*</span>
+            </label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="author" 
+              name="author" 
+              value="<%= post.author %>"
+              required
+            >
+          </div>
+
+          <div class="mb-4">
+            <label for="content" class="form-label fw-bold">
+              Post Content <span class="text-danger">*</span>
+            </label>
+            <textarea 
+              class="form-control" 
+              id="content" 
+              name="content" 
+              rows="12" 
+              minlength="10"
+              required
+            ><%= post.content %></textarea>
+            <div class="form-text" id="charCount">
+              <i class="bi bi-check-circle text-success"></i> Minimum 10 characters (<%= post.content.length %>/10)
+            </div>
+          </div>
+
+          <div class="d-flex gap-2 justify-content-between">
+            <a href="<%= referrer.includes('/posts') ? '/posts' : '/' %>" class="btn btn-outline-secondary" id="cancelBtn">
+              <i class="bi bi-arrow-left"></i> Cancel
+            </a>
+            <button type="submit" class="btn btn-success btn-lg">
+              <i class="bi bi-check-circle"></i> Update Post
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+    <div class="card mt-4 border-0 bg-light">
+      <div class="card-body">
+        <h6 class="card-title">
+          <i class="bi bi-info-circle text-info"></i> Post Information
+        </h6>
+        <ul class="small mb-0">
+          <li>Post ID: <%= post.id %></li>
+          <li>Created: <%= post.createdAt.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' }) %></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<%- include('partials/footer.ejs') %>

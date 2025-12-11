@@ -2,6 +2,12 @@
 
 A full-featured blog web application built with Node.js, Express.js, and EJS templating engine. This project allows users to create, view, edit, and delete blog posts with a beautiful, responsive design.
 
+## 🌐 Live Demo
+
+**[View Live Demo →](https://blog-web-app-busm.onrender.com)**
+
+> Note: The app may take 30 seconds to wake up on first load (free tier hosting).
+
 ## Features
 
 - ✨ **Create Posts** - Create new blog posts with title, author, and content
@@ -138,7 +144,3 @@ blog-web-app/
 ## License
 
 This project is open source and available under the MIT License.
-
-## Author
-
-Created as a capstone project for The Complete Web Development Bootcamp course.
